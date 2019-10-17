@@ -15,8 +15,13 @@ Additionally, you may choose to set the following optional variables:
 show_downloads: ["true" or "false" to indicate whether to provide a download URL]
 google_analytics: [Your Google Analytics tracking ID]
 ```
+### Markdown
 
-### Stylesheet
+You can see this [cheatsheet](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet) to work with Markdown language for adding features into this website.
+
+## Images 
+
+### Stylesheet (Advanced)
 
 If you'd like to add your own custom styles:
 
@@ -32,7 +37,7 @@ If you'd like to add your own custom styles:
 
 *Note: If you'd like to change the theme's Sass variables, you must set new values before the `@import` line in your stylesheet.*
 
-### Layouts
+### Layouts (Advanced)
 
 If you'd like to change the theme's HTML layout:
 
@@ -41,7 +46,7 @@ If you'd like to change the theme's HTML layout:
 3. Paste the default layout content copied in the first step
 4. Customize the layout as you'd like
 
-### Overriding GitHub-generated URLs
+### Overriding GitHub-generated URLs (Advanced)
 
 Templates often rely on URLs supplied by GitHub such as links to your repository or links to download your project. If you'd like to override one or more default URLs:
 
@@ -58,15 +63,8 @@ Templates often rely on URLs supplied by GitHub such as links to your repository
 
 For more information, see [the Jekyll variables documentation](https://jekyllrb.com/docs/variables/).
 
-## Roadmap
 
-See the [open issues](https://github.com/pages-themes/slate/issues) for a list of proposed features (and known issues).
-
-## Project philosophy
-
-The Slate theme is intended to make it quick and easy for GitHub Pages users to create their first (or 100th) website. The theme should meet the vast majority of users' needs out of the box, erring on the side of simplicity rather than flexibility, and provide users the opportunity to opt-in to additional complexity if they have specific needs or wish to further customize their experience (such as adding custom CSS or modifying the default layout). It should also look great, but that goes without saying.
-
-## Contributing
+## Contributing (Advanced)
 
 Interested in contributing to Slate? We'd love your help. Slate is an open source project, built one contribution at a time by users like you. See [the CONTRIBUTING file](docs/CONTRIBUTING.md) for instructions on how to contribute.
 
