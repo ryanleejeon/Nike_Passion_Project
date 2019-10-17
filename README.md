@@ -23,6 +23,8 @@ You can see this [cheatsheet](https://github.com/adam-p/markdown-here/wiki/Markd
 
 *Note that for images, you will need to place the image file in a place that it can be referenced and called.  I would suggest the github repo might be a good solution.  Often, I make an images folder and can call the raw images file.
 
+See example [here](https://github.com/pages-themes/slate/blob/master/index.md).  You can see the raw code also.
+
 #### Relative Links
 To create links to other pages, you can read this article:  https://github.blog/2016-12-05-relative-links-for-github-pages/.  Note that these pages should by default direct to the same local folder/directory the index file is.  In this case, my README.md file is my index. If the files are in a different folder, one should specifiy the path for that folder.
 
