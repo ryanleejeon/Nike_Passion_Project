@@ -2,7 +2,7 @@
 
 ### Configuration variables
 
-Slate will respect the following variables, if set in your site's `_config.yml`:
+This instruction is specific to the slate theme but should translate well to other themes.  You can change default variables in your website build by making changes in your `_config.yml` file:
 
 ```yml
 title: [The title of your site]
@@ -15,6 +15,7 @@ Additionally, you may choose to set the following optional variables:
 show_downloads: ["true" or "false" to indicate whether to provide a download URL]
 google_analytics: [Your Google Analytics tracking ID]
 ```
+You can take a look at the `_config.yml` file in this repository to see how to type in the title and description.
 
 ### Markdown
 
