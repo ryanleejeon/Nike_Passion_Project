@@ -15,15 +15,16 @@ Additionally, you may choose to set the following optional variables:
 show_downloads: ["true" or "false" to indicate whether to provide a download URL]
 google_analytics: [Your Google Analytics tracking ID]
 ```
+
 ### Markdown
 
-You can see this [cheatsheet](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet) to work with Markdown language for adding features into this website.
-
-### Images 
+You can see this [cheatsheet](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet) to work with Markdown language for adding features into this website.  This includes how to add headers, organization (e.g., bullets or lists), tables, and images.  It also includes how to add code to a website.
 
 ### Notebooks
 
 You can use a website to host notebooks.  First, you'll want to get the "raw" url from Github where your notebook is stored.  Then, navigate to https://nbviewer.jupyter.org and paste that URL.  The result will be a new generated URL that hosts your notebook.  This can be a [link](https://nbviewer.jupyter.org/github/isu-abe/516x/blob/master/module2/bootcamp/notebooks/nocode/Module%20IIB%20-%20Python%20Basics%20-%20no%20code.ipynb) in your website.
+
+## Advanced Features
 
 ### Stylesheet (Advanced)
 
@@ -68,7 +69,7 @@ Templates often rely on URLs supplied by GitHub such as links to your repository
 For more information, see [the Jekyll variables documentation](https://jekyllrb.com/docs/variables/).
 
 
-## Contributing (Advanced)
+### Contributing (Advanced)
 
 Interested in contributing to Slate? We'd love your help. Slate is an open source project, built one contribution at a time by users like you. See [the CONTRIBUTING file](docs/CONTRIBUTING.md) for instructions on how to contribute.
 
