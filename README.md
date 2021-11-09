@@ -34,10 +34,12 @@ Make sure you get an output of 200 when running this code block!
 print(page.headers)
 ```
 This line will give you an idea of what sort of data we are working with. 
+![ScreenShot](img/mess.png)
+
 
 Now I like to hop over to the Nike website, and right click -> inspect.
 
-<img> 
+
 
 
 I notice that all the image links are located in a code block with <img> 
@@ -59,6 +61,7 @@ URL_table = df[~df.NikeShoe_URLs.str.contains("data:image/gif;base64,")]
 URL_table.head(10)
 ```
 What this code block should give us, is a table of Nike URL's that we will use to parse multiple shoes at a single time!
+![ScreenShot](img/url.png)
 
 ### Skateboard shoes:
 
