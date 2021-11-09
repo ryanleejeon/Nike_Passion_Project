@@ -90,6 +90,7 @@ df_sb.head(15)
 <img>
 
 ### Sandals and Slides
+```
 page = requests.get("https://www.nike.com/w/mens-sandals-slides-fl76znik1")
 soup = BeautifulSoup(page.content, 'html.parser')
 page.status_code
