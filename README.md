@@ -1,126 +1,187 @@
-## Making a Project Website
+## Nike Passion Project: What Shoe Colors are NOW IN STYLE?!
 
-### Configuration variables
+### Objective: 
 
-This instruction is specific to the slate theme but should translate well to other themes.  You can change default variables in your website build by making changes in your `_config.yml` file:
+For athletes, shoes provide comfort, protection, and performance. But there are so many different types. On the inevitable day my Romaleos 3 finally tore at the seams, I thought of the question: which color Romaleos 5 should I buy? Which got me thinking, what colors are even in style? 
 
-```yml
-title: [The title of your site]
-description: [A short description of your site's purpose]
-```
 
-Additionally, you may choose to set the following optional variables:
+### Import Packages: 
 
 ```yml
-show_downloads: ["true" or "false" to indicate whether to provide a download URL]
-google_analytics: [Your Google Analytics tracking ID]
+import requests
+from bs4 import BeautifulSoup
+import pandas as pd
+import numpy as np
+import time
+import matplotlib
+import PIL, PIL.Image
+import webcolors
+
 ```
-You can take a look at the `_config.yml` file in this repository to see how to type in the title and description.
+### (1) Web Scraping: 
+```yml
+page = requests.get("https://www.nike.com/w/mens-soccer-shoes-1gdj0znik1zy7ok")
+soup = BeautifulSoup(page.content, 'html.parser')
+page.status_code
 
-### Markdown
+```
+Make sure you get an output of 200 when running this code block!
 
-You can see this [cheatsheet](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet) to work with Markdown language for adding features into this website.  This includes how to add headers, organization (e.g., bullets or lists), tables, and images.  It also includes how to add code to a website.
+```yml
+print(page.headers)
+```
+This line will give you an idea of what sort of data we are working with. 
 
-*Note that for images, you will need to place the image file in a place that it can be referenced and called.  I would suggest the github repo might be a good solution.  Often, I make an images folder and can call the raw images file.
+Now I like to hop over to the Nike website, and right click -> inspect.
 
-See example [here](https://github.com/pages-themes/slate/blob/master/index.md).  You can see the raw code also.
-
-#### Relative Links
-To create links to other pages, you can read this article:  https://github.blog/2016-12-05-relative-links-for-github-pages/.  Note that these pages should by default direct to the same local folder/directory the index file is.  In this case, my README.md file is my index. If the files are in a different folder, one should specifiy the path for that folder.
-
-### Notebooks
-
-You can use a website to host notebooks.  First, you'll want to get the "raw" url from Github where your notebook is stored.  Then, navigate to https://nbviewer.jupyter.org and paste that URL.  The result will be a new generated URL that hosts your notebook.  This can be a [link](https://nbviewer.jupyter.org/github/isu-abe/516x/blob/master/module2/bootcamp/notebooks/nocode/Module%20IIB%20-%20Python%20Basics%20-%20no%20code.ipynb) in your website.
-
-## Suggestions for Project Reporting
-
-### Interesting question 
-
-What is the scientitifc goal?  What would you do if you had all the data?  What do you want to predict or estimate?  Why is this relevant to ABE researchers or the field?  Provide some background on the rationale and relevance.
-
-### Data description
-
-What kind of data is avialble?  How is your data collected?  Are there any concerns about the data?  Which data is the most relevant?  Is the data easy to acccess? Will the data change over time?  What needs to be done to the data to get it ready for any downstream analysis?
-
-### Explore the data
-
-Demonstrate what you would do to describe the data and if it has any patterns or anomolies.  Make some plots.
-
-### Model the data
-
-Build a model, fit the model, validate the model.
-
-### Communciate and visualize the results
-
-What did you learn and do the results make sense?  Revisit your initial question and answer it.  H
-
-### Class Exercise
-
-In each project, I'd like to see a homework assignment that the class can do/evaluate to learn more about your data.  This should be a reproducible notebook that allows them to learn one or more aspects of your data workflow.  It is also an opportunity to share your research with your colleagues.
-
-Here is an example of a fantastic project website:
-
-https://stephenslab.github.io/ipynb-website/
-
-## Advanced Features
-
-### Stylesheet (Advanced)
-
-If you'd like to add your own custom styles:
-
-1. Create a file called `/assets/css/style.scss` in your site
-2. Add the following content to the top of the file, exactly as shown:
-    ```scss
-    ---
-    ---
-
-    @import "{{ site.theme }}";
-    ```
-3. Add any custom CSS (or Sass, including imports) you'd like immediately after the `@import` line
-
-*Note: If you'd like to change the theme's Sass variables, you must set new values before the `@import` line in your stylesheet.*
-
-### Layouts (Advanced)
-
-If you'd like to change the theme's HTML layout:
-
-1. [Copy the original template](https://github.com/pages-themes/slate/blob/master/_layouts/default.html) from the theme's repository<br />(*Pro-tip: click "raw" to make copying easier*)
-2. Create a file called `/_layouts/default.html` in your site
-3. Paste the default layout content copied in the first step
-4. Customize the layout as you'd like
-
-### Overriding GitHub-generated URLs (Advanced)
-
-Templates often rely on URLs supplied by GitHub such as links to your repository or links to download your project. If you'd like to override one or more default URLs:
-
-1. Look at [the template source](https://github.com/pages-themes/slate/blob/master/_layouts/default.html) to determine the name of the variable. It will be in the form of `{{ site.github.zip_url }}`.
-2. Specify the URL that you'd like the template to use in your site's `_config.yml`. For example, if the variable was `site.github.url`, you'd add the following:
-    ```yml
-    github:
-      zip_url: http://example.com/download.zip
-      another_url: another value
-    ```
-3. When your site is built, Jekyll will use the URL you specified, rather than the default one provided by GitHub.
-
-*Note: You must remove the `site.` prefix, and each variable name (after the `github.`) should be indent with two space below `github:`.*
-
-For more information, see [the Jekyll variables documentation](https://jekyllrb.com/docs/variables/).
+<img> 
 
 
-### Contributing (Advanced)
+I notice that all the image links are located in a code block with <img> 
+Its discriminatory but we can pull each URL out using that
+```yml
+for link in soup.find_all('img'):
+    print(link.get('src'))
+    
+```
 
-Interested in contributing to Slate? We'd love your help. Slate is an open source project, built one contribution at a time by users like you. See [the CONTRIBUTING file](docs/CONTRIBUTING.md) for instructions on how to contribute.
+Lets make an empty dataset 
+```
+df = pd.DataFrame(columns = ["NikeShoe_URLs"])
+for link in soup.find_all('img', attrs = {'class' : 'css-1fxh5tw product-card__hero-image'}):
+    shoes = link.get('src')
+    print(shoes)
+    df.loc[len(df.index)] = [shoes]
+URL_table = df[~df.NikeShoe_URLs.str.contains("data:image/gif;base64,")]
+URL_table.head(10)
+```
+What this code block should give us, is a table of Nike URL's that we will use to parse multiple shoes at a single time!
 
-### Previewing the theme locally
+### Skateboard shoes:
 
-If you'd like to preview the theme locally (for example, in the process of proposing a change):
+```
+df_colors = pd.DataFrame(columns = ["Colors"])
+appended_data = []
+for i in range(10):
+    df_colors = pd.DataFrame(columns = ["Colors"])
+    urllib.request.urlretrieve(shoes.NikeShoe_URLs[i], "image.png")
+    img = PIL.Image.open("image.png")
+    colors_RGB = extract_colorz(img)
+    #print(colors_RGB)
+    df_colors = pd.DataFrame(colors_RGB, columns=['RGB', 'Pixel #'])
+    df_colors['Color'] = df_colors['RGB'].map(lambda RGB: convert_rgb_to_names(RGB))
+    #df_colors['ShoeNumber'] = i
+    appended_data.append(df_colors)
+    #print(appended_data)
+Skateboard_data = pd.concat(appended_data)
+Skateboard_data["Pixel #"] = pd.to_numeric(Skateboard_data["Pixel #"])
+Skateboard_data["Color"] = Skateboard_data["Color"].astype(str)
+Skateboard_data.head(20)
+aggregation_functions = {'Pixel #': 'sum'}
+df_sb = Skateboard_data.groupby(Skateboard_data['Color']).aggregate(aggregation_functions)
+df_sb = df_sb.sort_values(by = ['Pixel #'], ascending=False)
+df_sb['ShoeColors'] = df_sb.index
+df_sb['ShoeColors'] = df_sb['ShoeColors'].str[2:-2]
+df_sb.reset_index(drop=True, inplace=True)
+df_sb.rename(columns={'Pixel #': 'Skateboard Shoes Pixels', 'ShoeColors': 'Skateboard Shoe Colors'}, inplace=True)
+df_sb.head(15)
+```
 
-1. Clone down the theme's repository (`git clone https://github.com/pages-themes/slate`)
-2. `cd` into the theme's directory
-3. Run `script/bootstrap` to install the necessary dependencies
-4. Run `bundle exec jekyll serve` to start the preview server
-5. Visit [`localhost:4000`](http://localhost:4000) in your browser to preview the theme
+<img>
 
-### Running tests
+### Sandals and Slides
+page = requests.get("https://www.nike.com/w/mens-sandals-slides-fl76znik1")
+soup = BeautifulSoup(page.content, 'html.parser')
+page.status_code
 
-The theme contains a minimal test suite, to ensure a site with the theme would build successfully. To run the tests, simply run `script/cibuild`. You'll need to run `script/bootstrap` one before the test script will work.
+#for link in soup.find_all('img'):
+    #print(link.get('src'))
+df = pd.DataFrame(columns = ["NikeShoe_URLs"])
+
+for link in soup.find_all('img', attrs = {'class' : 'css-1fxh5tw product-card__hero-image'}):
+    shoes = link.get('src')
+    #print(shoes)
+    df.loc[len(df.index)] = [shoes]
+
+URL_table = df[~df.NikeShoe_URLs.str.contains("data:image/gif;base64,")]
+URL_table.head(5)
+shoes = URL_table.reset_index(drop=True)
+#shoes.head(5)
+#shoes.NikeShoe_URLs[1]
+
+df_colors = pd.DataFrame(columns = ["Colors"])
+appended_data = []
+for i in range(10):
+    df_colors = pd.DataFrame(columns = ["Colors"])
+    urllib.request.urlretrieve(shoes.NikeShoe_URLs[i], "image.png")
+    img = PIL.Image.open("image.png")
+    colors_RGB = extract_colorz(img)
+    #print(colors_RGB)
+    df_colors = pd.DataFrame(colors_RGB, columns=['RGB', 'Pixel #'])
+    df_colors['Color'] = df_colors['RGB'].map(lambda RGB: convert_rgb_to_names(RGB))
+    #df_colors['ShoeNumber'] = i
+    appended_data.append(df_colors)
+    #print(appended_data)
+sandals_data = pd.concat(appended_data)
+sandals_data["Pixel #"] = pd.to_numeric(sandals_data["Pixel #"])
+sandals_data["Color"] = sandals_data["Color"].astype(str)
+sandals_data.head(20)
+aggregation_functions = {'Pixel #': 'sum'}
+df_sandals = sandals_data.groupby(sandals_data['Color']).aggregate(aggregation_functions)
+df_sandals = df_sandals.sort_values(by = ['Pixel #'], ascending=False)
+df_sandals['ShoeColors'] = df_sandals.index
+df_sandals['ShoeColors'] = df_sandals['ShoeColors'].str[2:-2]
+df_sandals.reset_index(drop=True, inplace=True)
+df_sandals.rename(columns={'Pixel #': 'Sandals/Slides Pixels', 'ShoeColors': 'Sandals/Slides Colors'}, inplace=True)
+df_sandals.head(15)
+```
+
+### Soccer Cleats
+
+```
+df_colors = pd.DataFrame(columns = ["Colors"])
+appended_data = []
+for i in range(10):
+    df_colors = pd.DataFrame(columns = ["Colors"])
+    urllib.request.urlretrieve(shoes.NikeShoe_URLs[i], "image.png")
+    img = PIL.Image.open("image.png")
+    colors_RGB = extract_colorz(img)
+    #print(colors_RGB)
+    df_colors = pd.DataFrame(colors_RGB, columns=['RGB', 'Pixel #'])
+    df_colors['Color'] = df_colors['RGB'].map(lambda RGB: convert_rgb_to_names(RGB))
+    #df_colors['ShoeNumber'] = i
+    appended_data.append(df_colors)
+    #print(appended_data)
+final_data = pd.concat(appended_data)
+final_data["Pixel #"] = pd.to_numeric(final_data["Pixel #"])
+final_data["Color"] = final_data["Color"].astype(str)
+final_data.head(20)
+aggregation_functions = {'Pixel #': 'sum'}
+df_cleats = final_data.groupby(final_data['Color']).aggregate(aggregation_functions)
+df_final = df_cleats.sort_values(by = ['Pixel #'], ascending=False)
+df_final['ShoeColors'] = df_final.index
+df_final['ShoeColors'] = df_final['ShoeColors'].str[2:-2]
+df_final.reset_index(drop=True, inplace=True)
+df_final.rename(columns={'Pixel #': 'Cleats Pixels', 'ShoeColors': 'Cleat Colors'}, inplace=True)
+df_final.head(15)
+```
+
+```
+df_final['Skateboard Shoes Colors'] = df_sb['Skateboard Shoe Colors']
+df_final['Sandals/Slides Colors'] = df_sandals['Sandals/Slides Colors']
+df_final.head(50)
+df_final['Skateboard Shoes Pixels'] = df_sb['Skateboard Shoes Pixels']
+df_final['Sandals/Slides Pixels'] = df_sandals['Sandals/Slides Pixels']
+#df_final.head(50)
+```
+Lets re order the columns and clean the dataframe up
+```
+cols = list(df_final.columns.values)
+#print(cols)
+shoe_colors_in_style = df_final[['Cleat Colors', 'Sandals/Slides Colors', 'Skateboard Shoes Colors',  'Cleats Pixels', 'Sandals/Slides Pixels', 'Skateboard Shoes Pixels' ]]
+```
+# End: A compiled dataset:
+```
+shoe_colors_in_style.head(50)
+```
+
