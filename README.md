@@ -38,6 +38,15 @@ This line will give you an idea of what sort of data we are working with.
 
 
 Now I like to hop over to the Nike website, and right click -> inspect.
+![ScreenShot](img/inspect.png)
+
+When you do that, a whole matrix like HTML code block will explode all over your screen! But no worries, be sure to click the very top left corner, where you can see a mouse. That will allow you to navigate your way through this giant mess of HTML code. 
+![ScreenShot](img/step1.png)
+
+Hover your mouse over to any image on the Nike site. You'll notice that the code blocks will start highlighting to represent the sections of code where the giant code block your mouse is pointing at, is referring to. 
+
+![ScreenShot](img/step2.png)
+
 
 
 
@@ -45,13 +54,9 @@ Now I like to hop over to the Nike website, and right click -> inspect.
 I notice that all the image links are located in a code block with <img> 
 Its discriminatory but we can pull each URL out using that
 ```yml
-for link in soup.find_all('img'):
-    print(link.get('src'))
-    
-```
+#for link in soup.find_all('img'):
+    #print(link.get('src'))
 
-Lets make an empty dataset 
-```
 df = pd.DataFrame(columns = ["NikeShoe_URLs"])
 for link in soup.find_all('img', attrs = {'class' : 'css-1fxh5tw product-card__hero-image'}):
     shoes = link.get('src')
