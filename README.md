@@ -166,7 +166,8 @@ df_final.reset_index(drop=True, inplace=True)
 df_final.rename(columns={'Pixel #': 'Cleats Pixels', 'ShoeColors': 'Cleat Colors'}, inplace=True)
 df_final.head(15)
 ```
-
+Now we have three datasets for (1) Skatboarding shoes, (2) Sandals/Slides and (3) Soccer cleats.
+Now we have to compile and organize the dataset! 
 ```
 df_final['Skateboard Shoes Colors'] = df_sb['Skateboard Shoe Colors']
 df_final['Sandals/Slides Colors'] = df_sandals['Sandals/Slides Colors']
