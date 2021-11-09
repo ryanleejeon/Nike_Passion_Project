@@ -4,6 +4,9 @@
 
 For athletes, shoes provide comfort, protection, and performance. But there are so many different types. On the inevitable day my Romaleos 3 finally tore at the seams, I thought of the question: which color Romaleos 5 should I buy? Which got me thinking, what colors are even in style? 
 
+![ScreenShot](img/intro.png)
+
+# Lets answer that question using data science and computer vision! 
 
 ### Import Packages: 
 
@@ -87,8 +90,7 @@ df_sb.rename(columns={'Pixel #': 'Skateboard Shoes Pixels', 'ShoeColors': 'Skate
 df_sb.head(15)
 ```
 
-<img>
-
+![ScreenShot](img/sb.png)
 ### Sandals and Slides
 ```
 page = requests.get("https://www.nike.com/w/mens-sandals-slides-fl76znik1")
@@ -136,7 +138,7 @@ df_sandals.reset_index(drop=True, inplace=True)
 df_sandals.rename(columns={'Pixel #': 'Sandals/Slides Pixels', 'ShoeColors': 'Sandals/Slides Colors'}, inplace=True)
 df_sandals.head(15)
 ```
-
+![ScreenShot](img/sd.png)
 ### Soccer Cleats
 
 ```
@@ -166,6 +168,7 @@ df_final.reset_index(drop=True, inplace=True)
 df_final.rename(columns={'Pixel #': 'Cleats Pixels', 'ShoeColors': 'Cleat Colors'}, inplace=True)
 df_final.head(15)
 ```
+![ScreenShot](img/cleats.png)
 Now we have three datasets for (1) Skatboarding shoes, (2) Sandals/Slides and (3) Soccer cleats.
 Now we have to compile and organize the dataset! 
 ```
@@ -186,4 +189,10 @@ shoe_colors_in_style = df_final[['Cleat Colors', 'Sandals/Slides Colors', 'Skate
 ```
 shoe_colors_in_style.head(50)
 ```
+![ScreenShot](img/final.png)
 
+# Discussion:
+The biggest thing I noticed was that soccer cleats had the most variety of colors, while sandals had the smallest variety. We can see that towards the bottom of the concatenated data frame. I also notice that most of the colors from the sandal variety were dark muted colors, while those from the cleats were often more warm and vibrant. 
+
+# Future work:
+I am now trying to develop frequency histograms of each shoe type, by pixel frequency. I can get them to work using random colors, but what I would like, is for the histogram bar to be filled in with the color that it represents. Doesn't make sense if white is red, black is pink, etc etc. 
