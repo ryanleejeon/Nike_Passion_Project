@@ -2,7 +2,13 @@
 
 ### Objective: 
 
-For athletes, shoes provide comfort, protection, and performance. But there are so many different types. On the inevitable day my Romaleos 3 finally tore at the seams, I thought of the question: which color Romaleos 5 should I buy? Which got me thinking, what colors are even in style? 
+For athletes, shoes provide comfort, protection, and performance. But there are so many different types. On the inevitable day my Romaleos 3 finally tore at the seams, I thought of the question: which color Romaleos 5 should I buy? 
+
+As a graduate student in computer vision and data science, this got me thinking how to answer the question...
+
+# What shoe colors are in style?
+
+Take a look at the new releases in the mens section- where do we even begin? 
 
 ![ScreenShot](img/intro.png)
 
