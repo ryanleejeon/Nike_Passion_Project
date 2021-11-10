@@ -14,6 +14,8 @@ Take a look at the new releases in the mens section- where do we even begin?
 
 # Lets answer that question using data science and computer vision! 
 
+Can we also see color palette patterns associated with different shoe types? What about across season? Lots of questions we can answer! 
+
 ### Import Packages: 
 
 ```yml
