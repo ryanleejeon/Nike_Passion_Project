@@ -10,7 +10,12 @@ As a graduate student in computer vision and data science, this got me thinking 
 
 Take a look at the new releases in the mens section- where do we even begin? 
 
-![ScreenShot](img/intro.png)
+<p align="center">
+    <img alt="3" src="https://user-images.githubusercontent.com/69263707/141361782-75a7eb71-c57e-4e35-9070-27674b5ebe19.png" width="400">
+</p>
+
+
+
 
 # Lets answer that question using data science and computer vision! 
 
@@ -74,7 +79,7 @@ URL_table = df[~df.NikeShoe_URLs.str.contains("data:image/gif;base64,")]
 URL_table.head(10)
 ```
 What this code block should give us, is a table of Nike URL's that we will use to parse multiple shoes at a single time!
-![ScreenShot](img/url.png)
+
 
 ### Skateboard shoes:
 
@@ -106,7 +111,17 @@ df_sb.rename(columns={'Pixel #': 'Skateboard Shoes Pixels', 'ShoeColors': 'Skate
 df_sb.head(15)
 ```
 
-![ScreenShot](img/sb.png)
+<p align="center">
+    <img alt="3" src="https://user-images.githubusercontent.com/69263707/141361871-6a3e1925-e8c9-4fc4-8c13-5239adbd9bb7.png" width="400">
+</p>
+
+
+
+
+
+
+
+
 ### Sandals and Slides
 ```
 page = requests.get("https://www.nike.com/w/mens-sandals-slides-fl76znik1")
@@ -154,7 +169,12 @@ df_sandals.reset_index(drop=True, inplace=True)
 df_sandals.rename(columns={'Pixel #': 'Sandals/Slides Pixels', 'ShoeColors': 'Sandals/Slides Colors'}, inplace=True)
 df_sandals.head(15)
 ```
-![ScreenShot](img/sd.png)
+<p align="center">
+    <img alt="3" src="https://user-images.githubusercontent.com/69263707/141362781-1c331d67-182f-418b-8ecc-5a104178208e.png" width="400">
+
+</p>
+
+
 ### Soccer Cleats
 
 ```
@@ -184,7 +204,12 @@ df_final.reset_index(drop=True, inplace=True)
 df_final.rename(columns={'Pixel #': 'Cleats Pixels', 'ShoeColors': 'Cleat Colors'}, inplace=True)
 df_final.head(15)
 ```
-![ScreenShot](img/cleats.png)
+<p align="center">
+    <img alt="3" src="https://user-images.githubusercontent.com/69263707/141363162-e07903d3-03a7-4483-8192-f8e3dff8d44e.jpg" width="400">
+
+</p>
+
+
 Now we have three datasets for (1) Skatboarding shoes, (2) Sandals/Slides and (3) Soccer cleats.
 Now we have to compile and organize the dataset! 
 ```
@@ -205,10 +230,22 @@ shoe_colors_in_style = df_final[['Cleat Colors', 'Sandals/Slides Colors', 'Skate
 ```
 shoe_colors_in_style.head(50)
 ```
-![ScreenShot](img/final.png)
+<p align="center">
+    <img alt="3" src="https://user-images.githubusercontent.com/69263707/141362606-cc321cbd-33bf-4d58-b50b-08ecaea3cad1.png" width="600">
+
+</p>
+
+
+Lets make barplots using the Seaborn package:
+<p align="center">
+    <img alt="3" src="https://user-images.githubusercontent.com/69263707/141361622-a58c8262-d23a-4bdf-a63b-327751a7b835.png" width="400">
+    <img alt="3" src="https://user-images.githubusercontent.com/69263707/141362200-0659170d-b95b-49e0-972f-881d4f62f1a3.png" width="400">
+    <img alt="3" src="https://user-images.githubusercontent.com/69263707/141362199-ed5cf96a-9636-419f-b203-60cbb65a9ad2.png" width="400">
+</p>
+
 
 # Discussion:
 The biggest thing I noticed was that soccer cleats had the most variety of colors, while sandals had the smallest variety. We can see that towards the bottom of the concatenated data frame. I also notice that most of the colors from the sandal variety were dark muted colors, while those from the cleats were often more warm and vibrant. 
 
 # Future work:
-I am now trying to develop frequency histograms of each shoe type, by pixel frequency. I can get them to work using random colors, but what I would like, is for the histogram bar to be filled in with the color that it represents. Doesn't make sense if white is red, black is pink, etc etc. 
+Can we somehow implement machine learning to get similar results? Perhaps a KMeans to determine colors instead of using pixel frequency? 
