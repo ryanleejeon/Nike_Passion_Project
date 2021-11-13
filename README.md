@@ -1,6 +1,13 @@
 ## Nike Passion Project: What Shoe Colors are NOW IN STYLE?!
 
-### Objective: 
+# Project Workflow: 
+1. Ask an interesting question: 
+2. Obtain the data
+3. Explore the data
+4. Communicate and visualize the results
+
+
+### 1. Ask as interesting question: 
 
 For athletes, shoes provide comfort, protection, and performance. But there are so many different types. On the inevitable day my Romaleos 3 finally tore at the seams, I thought of the question: which color Romaleos 5 should I buy? 
 
@@ -17,7 +24,9 @@ Take a look at the new releases in the mens section- where do we even begin?
 
 
 
-# Lets answer that question using data science and computer vision! 
+# 2. Obtain the data: 
+
+I think using some Python packages, we can answer this question using data science and computer vision! 
 
 Can we also see color palette patterns associated with different shoe types? What about across season? Lots of questions we can answer! 
 
@@ -34,7 +43,7 @@ import PIL, PIL.Image
 import webcolors
 
 ```
-### (1) Web Scraping: 
+### Web Scraping: 
 ```yml
 page = requests.get("https://www.nike.com/w/mens-soccer-shoes-1gdj0znik1zy7ok")
 soup = BeautifulSoup(page.content, 'html.parser')
@@ -80,6 +89,7 @@ URL_table.head(10)
 ```
 What this code block should give us, is a table of Nike URL's that we will use to parse multiple shoes at a single time!
 
+# 3. Explore the data:
 
 ### Skateboard shoes:
 
@@ -226,7 +236,9 @@ cols = list(df_final.columns.values)
 #print(cols)
 shoe_colors_in_style = df_final[['Cleat Colors', 'Sandals/Slides Colors', 'Skateboard Shoes Colors',  'Cleats Pixels', 'Sandals/Slides Pixels', 'Skateboard Shoes Pixels' ]]
 ```
-# End: A compiled dataset:
+# 4. Visualize the dataset:
+
+A compiled dataset:
 ```
 shoe_colors_in_style.head(50)
 ```
